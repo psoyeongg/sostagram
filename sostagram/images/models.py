@@ -1,5 +1,5 @@
 from django.db import models
-
+from sostagram.users import models as user_models
 
 class TimeStampedModel(models.Model):
 
@@ -12,16 +12,36 @@ class TimeStampedModel(models.Model):
 
 class Image(TimeStampedModel):
 
-    file = models.TextField()
-    locations = models.CharField(max_length=140)
-    caption = models.TextField()
+    """ Image Model """
 
+    file = models.ImageField()
+    location = models.CharField(max_length=140)
+    caption = models.TextField()
+    creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return '{} - {}'.format(self.location, self.caption)
+    
 
 class Comment(TimeStampedModel):
 
-    message = models.TextField()
+    """ Comment Model """
 
+    message = models.TextField()
+    creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.message
+    
 
 class Like(TimeStampedModel):
 
-    creator = models.ForeignKey(User)
+    """ Like Model """
+
+    creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return 'User: {} - Image Caption: {}'.format(self.creator.username, self.image.caption)
+    

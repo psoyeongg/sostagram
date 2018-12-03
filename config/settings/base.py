@@ -39,7 +39,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://localhost/sostagram'),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sostagram',
+        'USER': 'postgres',
+        'PASSWORD': 'abc123',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -63,15 +70,14 @@ DJANGO_APPS = [
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
-    'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'rest_framework',
 ]
 LOCAL_APPS = [
     'sostagram.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
+    'sostagram.images.apps.ImagesConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
