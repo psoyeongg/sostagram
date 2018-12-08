@@ -31,7 +31,7 @@ class FollowUser(APIView):
 
         user.save()
 
-        notification_views.create_notification(user, user_to_follow, 'follow')
+        # notification_views.create_notification(user, user_to_follow, 'follow')
 
         return Response(status=status.HTTP_200_OK)
 
