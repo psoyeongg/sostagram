@@ -74,6 +74,7 @@ THIRD_PARTY_APPS = [
     'allauth.account',  # registration
     'allauth.socialaccount',    # registration
     'rest_framework',   # REST framework
+    'taggit',   # Tags for the photos
 ]
 LOCAL_APPS = [
     'sostagram.users.apps.UsersAppConfig',
@@ -256,3 +257,4 @@ SOCIALACCOUNT_ADAPTER = 'sostagram.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+TAGGIT_CASE_INSENSITIVE = True
