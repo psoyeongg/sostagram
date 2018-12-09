@@ -68,7 +68,10 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
     },
     {
       loader: require.resolve('css-loader'),
-      options: cssOptions,
+      options: {
+        cssOptions,
+        camelCase: 'dashes',
+      }
     },
     {
       // Options for PostCSS as we reference these options twice
@@ -400,7 +403,7 @@ module.exports = {
               {
                 loader: require.resolve("sass-loader"),
                 options: {
-                  data: "@import '../src/config/_variables.scss';",
+                  data:`@import "${paths.appSrc.replace(/\\/g, '/')}/config/_varialbles.scss";`,
                   sourceMap: shouldUseSourceMap,
                 }
               }
