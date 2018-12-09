@@ -19,7 +19,7 @@ const Footer = (props, context) => (
         </ul>
       </nav>
     </div>
-    <div className="Column">
+    <div>
       <span className="Copyright">© 2018 Sostagram</span>
     </div>
   </footer>
