@@ -5,8 +5,7 @@ import I18n from 'redux-i18n';
 import store from 'redux/configureStore';
 import App from 'components/App';
 import { tranlations } from "translations";
-
-// import "ReactotronConfig";
+// import 'reset-css';
 
 ReactDOM.render(
     <Provider store={store}>
